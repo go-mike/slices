@@ -22,7 +22,7 @@ func Test_Index_NotFound(t *testing.T) {
 
 // Test_Index_Found tests the case where the item is found.
 func Test_Index_Found(t *testing.T) {
-	source := []int{1, 2, 3}
+	source := []int{1, 2, 3, 2, 5}
 	result := Index(source, 2)
 	assert.Equal(t, 1, result)
 }
@@ -43,7 +43,7 @@ func Test_IndexFunc_NotFound(t *testing.T) {
 
 // Test_IndexFunc_Found tests the case where the item is found.
 func Test_IndexFunc_Found(t *testing.T) {
-	source := []int{1, 2, 3}
+	source := []int{1, 2, 3, 2, 5}
 	result := IndexFunc(source, func(i int) bool { return i == 2 })
 	assert.Equal(t, 1, result)
 }
