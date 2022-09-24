@@ -7,11 +7,15 @@
 - Clone
 - Compact
 - CompactFunc
+- Compare
+- CompareFunc
 - Contains
 - ContainsFunc
 - Count
 - CountFunc
 - Delete
+- Equals
+- EqualsFunc
 - ExtractRange
 - ExtractRangeStep
 - Filter
@@ -51,6 +55,4 @@
 - [ ] BubbleSort/Func
 - [ ] MergeSort/Func
 - [ ] QuickSort/Func
-- [ ] Equal/Func : To check if two slices are equal
-- [ ] Compare/Func : To compare two slices
 - [ ] IsSorted/Func : To check if a slice is sorted
