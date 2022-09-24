@@ -4,6 +4,10 @@
 
 - All
 - Any
+- BinarySearch
+- BinarySearchFunc
+- BubbleSort
+- BubbleSortFunc
 - Clone
 - Compact
 - CompactFunc
@@ -53,7 +57,5 @@
 
 ## RoadMap
 
-- [ ] BinarySearch/Func
-- [ ] BubbleSort/Func
 - [ ] MergeSort/Func
 - [ ] QuickSort/Func
