@@ -18,8 +18,11 @@
 - Flatten
 - FlattenMap
 - GroupBy
+- Grow
 - Index
 - IndexFunc
+- Indices
+- IndicesFunc
 - Insert
 - LastIndex
 - LastIndexFunc
@@ -48,8 +51,6 @@
 - [ ] BubbleSort/Func
 - [ ] MergeSort/Func
 - [ ] QuickSort/Func
-- [ ] Indices/Func : To get indices of elements
 - [ ] Equal/Func : To check if two slices are equal
 - [ ] Compare/Func : To compare two slices
-- [ ] Grow
 - [ ] IsSorted/Func : To check if a slice is sorted
