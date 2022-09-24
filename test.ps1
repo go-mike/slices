@@ -5,7 +5,7 @@ param(
 
 # https://github.com/wgross/fswatcher-engine-event
 
-$Command = "go test ./..."
+$Command = "go test -fuzz=Fuzz -fuzztime=1s ./..."
 if ($VerbosePreference) {
     $Command = $Command + " -v"
 }

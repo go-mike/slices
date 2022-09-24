@@ -3,9 +3,9 @@ package slices
 import "golang.org/x/exp/constraints"
 
 // IsSortedFunc returns true if the slice is sorted by the given predicate.
-func IsSortedFunc[E any](slice []E, less func(E, E) bool) bool {
+func IsSortedFunc[E any](slice []E, compare func(E, E) int) bool {
 	for i := 1; i < len(slice); i++ {
-		if less(slice[i], slice[i-1]) {
+		if compare(slice[i-1], slice[i]) > 0 {
 			return false
 		}
 	}
@@ -14,5 +14,5 @@ func IsSortedFunc[E any](slice []E, less func(E, E) bool) bool {
 
 // IsSorted returns true if the slice is sorted.
 func IsSorted[E constraints.Ordered](slice []E) bool {
-	return IsSortedFunc(slice, func(a, b E) bool { return a < b })
+	return IsSortedFunc(slice, compareOrdered[E])
 }
