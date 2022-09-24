@@ -19,6 +19,7 @@
 - GroupBy
 - Index
 - IndexFunc
+- Insert
 - LastIndex
 - LastIndexFunc
 - Map
@@ -50,5 +51,5 @@
 - [ ] Compare/Func : To compare two slices
 - [ ] Delete
 - [ ] Grow
-- [ ] Insert : To insert a slice into another slice
+- [ ] Replace : To replace a slice with another slice
 - [ ] IsSorted/Func : To check if a slice is sorted
