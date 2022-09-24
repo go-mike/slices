@@ -11,6 +11,7 @@
 - ContainsFunc
 - Count
 - CountFunc
+- Delete
 - ExtractRange
 - ExtractRangeStep
 - Filter
@@ -30,6 +31,7 @@
 - RangeStep
 - Reduce
 - ReduceRight
+- Replace
 - Reverse
 - ReverseInPlace
 - Trim
@@ -49,7 +51,5 @@
 - [ ] Indices/Func : To get indices of elements
 - [ ] Equal/Func : To check if two slices are equal
 - [ ] Compare/Func : To compare two slices
-- [ ] Delete
 - [ ] Grow
-- [ ] Replace : To replace a slice with another slice
 - [ ] IsSorted/Func : To check if a slice is sorted
