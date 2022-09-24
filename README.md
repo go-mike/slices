@@ -28,6 +28,8 @@
 - Indices
 - IndicesFunc
 - Insert
+- IsSorted
+- IsSortedFunc
 - LastIndex
 - LastIndexFunc
 - Map
@@ -55,4 +57,3 @@
 - [ ] BubbleSort/Func
 - [ ] MergeSort/Func
 - [ ] QuickSort/Func
-- [ ] IsSorted/Func : To check if a slice is sorted
