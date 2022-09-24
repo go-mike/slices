@@ -39,6 +39,10 @@
 - Map
 - MapRange
 - MapRangeStep
+- MergeSort
+- MergeSortFunc
+- MergeSorted
+- MergeSortedFunc
 - Partition
 - Range
 - RangeStep
@@ -57,5 +61,4 @@
 
 ## RoadMap
 
-- [ ] MergeSort/Func
 - [ ] QuickSort/Func
