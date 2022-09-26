@@ -47,3 +47,28 @@ func Test_IndexFunc_Found(t *testing.T) {
 	result := IndexFunc(source, func(i int) bool { return i == 2 })
 	assert.Equal(t, 1, result)
 }
+
+// Test_IndexIndexedFunc_EmptySource tests the case where the source slice is empty.
+func Test_IndexIndexedFunc_EmptySource(t *testing.T) {
+	var source []int
+	result := IndexIndexedFunc(source, func(int, int) bool { return true })
+	assert.Equal(t, -1, result)
+}
+
+// Test_IndexIndexedFunc_OnItem tests the case where the item is searched by item.
+func Test_IndexIndexedFunc_OnItem(t *testing.T) {
+	source := []int{10, 20, 30, 20, 50}
+	result := IndexIndexedFunc(source, func(i int, _ int) bool { return i == 20 })
+	assert.Equal(t, 1, result)
+	result = IndexIndexedFunc(source, func(i int, _ int) bool { return i == 40 })
+	assert.Equal(t, -1, result)
+}
+
+// Test_IndexIndexedFunc_OnIndex tests the case where the item is searched by index.
+func Test_IndexIndexedFunc_OnIndex(t *testing.T) {
+	source := []int{10, 20, 30, 20, 50}
+	result := IndexIndexedFunc(source, func(_ int, i int) bool { return i == 3 })
+	assert.Equal(t, 3, result)
+	result = IndexIndexedFunc(source, func(_ int, i int) bool { return i == 5 })
+	assert.Equal(t, -1, result)
+}

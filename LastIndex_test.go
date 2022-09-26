@@ -47,3 +47,24 @@ func Test_LastIndexFunc_Found(t *testing.T) {
 	result := LastIndexFunc(source, func(i int) bool { return i == 2 })
 	assert.Equal(t, 3, result)
 }
+
+// Test_LastIndexIndexedFunc_EmptySource tests the case where the source slice is empty.
+func Test_LastIndexIndexedFunc_EmptySource(t *testing.T) {
+	var source []int
+	result := LastIndexIndexedFunc(source, func(int, int) bool { return true })
+	assert.Equal(t, -1, result)
+}
+
+// Test_LastIndexIndexedFunc_OnItem tests the case where the item is searched by item.
+func Test_LastIndexIndexedFunc_OnItem(t *testing.T) {
+	source := []int{10, 20, 30, 20, 50}
+	result := LastIndexIndexedFunc(source, func(i int, _ int) bool { return i == 20 })
+	assert.Equal(t, 3, result)
+}
+
+// Test_LastIndexIndexedFunc_OnIndex tests the case where the item is searched by index.
+func Test_LastIndexIndexedFunc_OnIndex(t *testing.T) {
+	source := []int{10, 20, 30, 20, 50}
+	result := LastIndexIndexedFunc(source, func(_ int, i int) bool { return i == 3 })
+	assert.Equal(t, 3, result)
+}

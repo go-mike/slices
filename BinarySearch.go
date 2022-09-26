@@ -6,7 +6,7 @@ import "golang.org/x/exp/constraints"
 // The slice must be sorted.
 // The given predicate must return 0 if the element is found, -1 if the element is less than the current element,
 // and 1 if the element is greater than the current element.
-// The function returns a second value which is true if the element was found.
+// The function returns a second item which is true if the element was found.
 func BinarySearchFunc[E any](slice []E, compare func(E) int) (int, bool) {
 	low := 0
 	high := len(slice) - 1
@@ -26,13 +26,13 @@ func BinarySearchFunc[E any](slice []E, compare func(E) int) (int, bool) {
 
 // BinarySearch returns the index where an element is found, or would be found, in the given slice.
 // The slice must be sorted.
-// The function returns a second value which is true if the element was found.
+// The function returns a second item which is true if the element was found.
 func BinarySearch[E constraints.Ordered](slice []E, element E) (int, bool) {
-	return BinarySearchFunc(slice, func(value E) int {
-		if value < element {
+	return BinarySearchFunc(slice, func(item E) int {
+		if item < element {
 			return 1
 		}
-		if value > element {
+		if item > element {
 			return -1
 		}
 		return 0

@@ -1,13 +1,18 @@
 [CmdletBinding()]
 param(
-    [Parameter()][switch] $Cover
+    [Parameter()][switch] $Cover,
+    [Parameter()][switch] $Fuzz,
+    [Parameter()][string] $FuzzTime = "1s"
 )
 
 # https://github.com/wgross/fswatcher-engine-event
 
-$Command = "go test -fuzz=Fuzz -fuzztime=1s ./..."
+$Command = "go test ./..."
 if ($VerbosePreference) {
     $Command = $Command + " -v"
+}
+if ($Fuzz) {
+    $Command = $Command + " -fuzz=Fuzz -fuzztime=$FuzzTime"
 }
 if ($Cover) {
     $PackageList = go list ./...
