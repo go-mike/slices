@@ -2,6 +2,7 @@ package slices
 
 import "golang.org/x/exp/constraints"
 
+// QuickSortFunc sorts the given slice using the given comparison function.
 func QuickSortFunc[E any](source []E, compare func(E, E) int) []E {
 	if len(source) <= 1 {
 		return source
@@ -23,6 +24,18 @@ func QuickSortFunc[E any](source []E, compare func(E, E) int) []E {
 	return append(append(left, pivot), right...)
 }
 
+// QuickSort sorts the given slice.
 func QuickSort[E constraints.Ordered](source []E) []E {
 	return QuickSortFunc(source, compareOrdered[E])
+}
+
+// QuickSortInPlaceFunc sorts the given slice in place using the given comparison function.
+func QuickSortInPlaceFunc[E any](source []E, compare func(E, E) int) {
+	sorted := QuickSortFunc(source, compare)
+	copy(source, sorted)
+}
+
+// QuickSortInPlace sorts the given slice in place.
+func QuickSortInPlace[E constraints.Ordered](source []E) {
+	QuickSortInPlaceFunc(source, compareOrdered[E])
 }

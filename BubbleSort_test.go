@@ -4,64 +4,64 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	fuzz "github.com/AdaLogics/go-fuzz-headers"
 )
 
-// Test_BubbleSortInPlaceFunc_Empty tests the case where the slice is empty.
-func Test_BubbleSortInPlaceFunc_Empty(t *testing.T) {
-	slice := []int{}
-	BubbleSortInPlaceFunc(slice, func(a, b int) int { return a - b })
-	assert.Equal(t, []int{}, slice)
+// Fuzz_BubbleSortInPlaceFunc fuzz test for BubbleSortInPlaceFunc.
+func Fuzz_BubbleSortInPlaceFunc(f *testing.F) {
+	f.Add([]byte{0})
+	f.Add([]byte{1, 2})
+	f.Add([]byte{2, 3, 4})
+	f.Add([]byte{2, 4, 3})
+	f.Fuzz(func(t *testing.T, data []byte) {
+		fuzzer := fuzz.NewConsumer(data)
+		var slice []int
+		if err := fuzzer.CreateSlice(&slice); err != nil {
+			t.Skip(err)
+		}
+		BubbleSortInPlaceFunc(slice, func(a, b int) int { return a - b })
+		assert.IsNonDecreasing(t, slice)
+	})
 }
 
-// Test_BubbleSortInPlaceFunc tests the case where the slice is not empty.
-func Test_BubbleSortInPlaceFunc(t *testing.T) {
-	slice := []int{30, 50, 20, 40, 10}
-	BubbleSortInPlaceFunc(slice, func(a, b int) int { return a - b })
-	assert.Equal(t, []int{10, 20, 30, 40, 50}, slice)
+// Fuzz_BubbleSortInPlace fuzz test for BubbleSortInPlace.
+func Fuzz_BubbleSortInPlace(f *testing.F) {
+	f.Add([]byte{0})
+	f.Fuzz(func(t *testing.T, data []byte) {
+		fuzzer := fuzz.NewConsumer(data)
+		var slice []int
+		if err := fuzzer.CreateSlice(&slice); err != nil {
+			t.Skip(err)
+		}
+		BubbleSortInPlace(slice)
+		assert.IsNonDecreasing(t, slice)
+	})
 }
 
-// Test_BubbleSortInPlace_Empty tests the case where the slice is empty.
-func Test_BubbleSortInPlace_Empty(t *testing.T) {
-	slice := []int{}
-	BubbleSortInPlace(slice)
-	assert.Equal(t, []int{}, slice)
+// Fuzz_BubbleSortFunc fuzz test for BubbleSortFunc.
+func Fuzz_BubbleSortFunc(f *testing.F) {
+	f.Add([]byte{0})
+	f.Fuzz(func(t *testing.T, data []byte) {
+		fuzzer := fuzz.NewConsumer(data)
+		var slice []int
+		if err := fuzzer.CreateSlice(&slice); err != nil {
+			t.Skip(err)
+		}
+		slice = BubbleSortFunc(slice, func(a, b int) int { return a - b })
+		assert.IsNonDecreasing(t, slice)
+	})
 }
 
-// Test_BubbleSortInPlace tests the case where the slice is not empty.
-func Test_BubbleSortInPlace(t *testing.T) {
-	slice := []int{30, 50, 20, 40, 10}
-	BubbleSortInPlace(slice)
-	assert.Equal(t, []int{10, 20, 30, 40, 50}, slice)
-}
-
-// Test_BubbleSortFunc_Empty tests the case where the slice is empty.
-func Test_BubbleSortFunc_Empty(t *testing.T) {
-	slice := []int{}
-	clone := BubbleSortFunc(slice, func(a, b int) int { return a - b })
-	assert.Equal(t, []int{}, slice)
-	assert.Equal(t, []int{}, clone)
-}
-
-// Test_BubbleSortFunc tests the case where the slice is not empty.
-func Test_BubbleSortFunc(t *testing.T) {
-	slice := []int{30, 50, 20, 40, 10}
-	clone := BubbleSortFunc(slice, func(a, b int) int { return a - b })
-	assert.Equal(t, []int{30, 50, 20, 40, 10}, slice)
-	assert.Equal(t, []int{10, 20, 30, 40, 50}, clone)
-}
-
-// Test_BubbleSort_Empty tests the case where the slice is empty.
-func Test_BubbleSort_Empty(t *testing.T) {
-	slice := []int{}
-	clone := BubbleSort(slice)
-	assert.Equal(t, []int{}, slice)
-	assert.Equal(t, []int{}, clone)
-}
-
-// Test_BubbleSort tests the case where the slice is not empty.
-func Test_BubbleSort(t *testing.T) {
-	slice := []int{30, 50, 20, 40, 10}
-	clone := BubbleSort(slice)
-	assert.Equal(t, []int{30, 50, 20, 40, 10}, slice)
-	assert.Equal(t, []int{10, 20, 30, 40, 50}, clone)
+// Fuzz_BubbleSort fuzz test for BubbleSort.
+func Fuzz_BubbleSort(f *testing.F) {
+	f.Add([]byte{0})
+	f.Fuzz(func(t *testing.T, data []byte) {
+		fuzzer := fuzz.NewConsumer(data)
+		var slice []int
+		if err := fuzzer.CreateSlice(&slice); err != nil {
+			t.Skip(err)
+		}
+		slice = BubbleSort(slice)
+		assert.IsNonDecreasing(t, slice)
+	})
 }
