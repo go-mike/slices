@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [Parameter()][string] $Fuzz = "Fuzz",
+    [Parameter()][string] $Func = "",
     [Parameter()][int] $FuzzTime = 1,
     [Parameter()][switch] $ExitOnError
 )
@@ -12,9 +12,9 @@ $HasError = $false
 foreach ($GoTestFile in $GoTestFiles) {
     $FileContent = Get-Content -Path $GoTestFile.FullName
     foreach ($Line in $FileContent) {
-        if ($Line -match "func ($Fuzz[\w_]+)\(") {
+        if ($Line -match "func Fuzz_($Func[\w_]+)\(") {
             $FuzzFunction = $Matches[1]
-            $Command = "go test . -fuzz=^$($FuzzFunction)`$ -fuzztime=$($FuzzTime)s"
+            $Command = "go test . -fuzz=^Fuzz_$($FuzzFunction)`$ -fuzztime=$($FuzzTime)s"
             $PackageList = go list ./...
             $Command = $Command + " -covermode=count `"$PackageList`""
             if ($VerbosePreference) {
