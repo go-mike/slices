@@ -54,6 +54,8 @@
 - MergeSorted
 - MergeSortedFunc
 - Partition
+- QuickSort
+- QuickSortFunc
 - Range
 - RangeStep
 - Reduce
@@ -76,7 +78,3 @@
 - TrimEndIndexed
 - TrimEndIndexedFunc
 - TrimCapacity
-
-## RoadMap
-
-- [ ] QuickSort/Func

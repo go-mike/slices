@@ -31,19 +31,19 @@ func MergeSorted[E constraints.Ordered](left []E, right []E) []E {
 }
 
 // MergeSortFunc is a function that sorts a slice using the merge sort algorithm.
-func MergeSortFunc[E any](slice []E, compare func(E, E) int) []E {
-	if len(slice) <= 1 {
-		return slice
+func MergeSortFunc[E any](source []E, compare func(E, E) int) []E {
+	if len(source) <= 1 {
+		return source
 	}
 
-	mid := len(slice) / 2
-	left := MergeSortFunc(slice[:mid], compare)
-	right := MergeSortFunc(slice[mid:], compare)
+	mid := len(source) / 2
+	left := MergeSortFunc(source[:mid], compare)
+	right := MergeSortFunc(source[mid:], compare)
 
 	return MergeSortedFunc(left, right, compare)
 }
 
 // MergeSort is a function that sorts a slice using the merge sort algorithm.
-func MergeSort[E constraints.Ordered](slice []E) []E {
-	return MergeSortFunc(slice, compareOrdered[E])
+func MergeSort[E constraints.Ordered](source []E) []E {
+	return MergeSortFunc(source, compareOrdered[E])
 }
